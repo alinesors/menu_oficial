@@ -1,23 +1,22 @@
-[gd_scene format=3 uid="uid://begfqqmgr0hvp"]
+[gd_scene format=3 uid="uid://vsqem1xqyniv"]
 
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/removed_template/base/nodes/utilities/capture_focus.gd" id="2_1kqi1"]
 [ext_resource type="PackedScene" uid="uid://i36xcmixieoo" path="res://scenes/credits/credits_label.tscn" id="3_qr2vp"]
 
 [node name="EndCredits" type="EndCreditsRust" unique_id=1421613014]
-layout_mode = 3
+scroll_paused = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-main_menu_scene_path = ""
-force_mouse_mode_visible = false
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1490660403]
 unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+scroll_vertical = 5
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 

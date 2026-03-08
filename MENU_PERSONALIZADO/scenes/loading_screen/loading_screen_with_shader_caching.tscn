@@ -1,13 +1,10 @@
 [gd_scene format=3 uid="uid://s0376yunxtw8"]
 
-[ext_resource type="Script" path="res://scenes/loading_screen/loading_screen_with_shader_caching.gd" id="1_script"]
-
 [sub_resource type="QuadMesh" id="QuadMesh_klnwy"]
 
 [node name="LoadingScreen" type="LoadingScreenWithShaderCachingRust" unique_id=83509031]
 process_mode = 3
 layer = 20
-script = ExtResource("1_script")
 spatial_shader_material_dir = ""
 cache_shaders_scene = "res://scenes/menus/main_menu/main_menu_with_animations.tscn"
 mesh = SubResource("QuadMesh_klnwy")
@@ -35,7 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0)
+color = Color(0.184314, 0.105882, 0.054902, 1)
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="Control" unique_id=630614432]
 layout_mode = 1
@@ -46,6 +43,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
+visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=10456653]
 layout_mode = 0

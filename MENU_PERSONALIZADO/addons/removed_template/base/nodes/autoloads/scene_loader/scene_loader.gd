@@ -37,6 +37,14 @@ func _minimum_loading_time_elapsed() -> bool:
 		return true
 	return (Time.get_ticks_msec() - _load_started_msec) >= int(minimum_loading_screen_time * 1000.0)
 
+func _loading_screen_ready_to_finish() -> bool:
+	if _background_loading:
+		return true
+	var current := get_tree().current_scene
+	if current != null and current.has_method("can_close_loading_screen"):
+		return bool(current.call("can_close_loading_screen"))
+	return true
+
 func _check_scene_path() -> bool:
 	if _scene_path == null or _scene_path == "":
 		push_warning("scene path is empty")
@@ -139,11 +147,13 @@ func _unhandled_key_input(event : InputEvent) -> void:
 			get_tree().quit()
 
 func _ready() -> void:
+	if loading_screen_path != null and not loading_screen_path.is_empty():
+		set_loading_screen(loading_screen_path)
 	set_process(false)
 
 func _process(_delta) -> void:
 	if _scene_ready:
-		if _minimum_loading_time_elapsed() and not _background_loading:
+		if _minimum_loading_time_elapsed() and _loading_screen_ready_to_finish() and not _background_loading:
 			set_process(false)
 			change_scene_to_resource()
 		return
@@ -157,6 +167,6 @@ func _process(_delta) -> void:
 			if not _scene_loaded_emitted:
 				emit_signal("scene_loaded")
 				_scene_loaded_emitted = true
-			if _minimum_loading_time_elapsed() and not _background_loading:
+			if _minimum_loading_time_elapsed() and _loading_screen_ready_to_finish() and not _background_loading:
 				set_process(false)
 				change_scene_to_resource()

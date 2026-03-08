@@ -590,6 +590,8 @@ struct LoadingScreenRust {
 	#[export]
 	progress_lerp_speed: f64,
 	#[export]
+	hold_after_complete_sec: f64,
+	#[export]
 	in_progress_text: GString,
 	#[export]
 	complete_text: GString,
@@ -597,6 +599,7 @@ struct LoadingScreenRust {
 	scene_loading_progress: f64,
 	displayed_progress: f64,
 	loading_start_time_ms: i64,
+	complete_visible_since_ms: i64,
 	base: Base<CanvasLayer>,
 }
 
@@ -606,12 +609,14 @@ impl ICanvasLayer for LoadingScreenRust {
 		Self {
 			state_change_delay: 15.0,
 			progress_lerp_speed: 5.5,
+			hold_after_complete_sec: 0.25,
 			in_progress_text: GString::from("Loading..."),
 			complete_text: GString::from("Loading Complete!"),
 			scene_loading_complete: false,
 			scene_loading_progress: 0.0,
 			displayed_progress: 0.0,
 			loading_start_time_ms: 0,
+			complete_visible_since_ms: 0,
 			base,
 		}
 	}
@@ -648,8 +653,12 @@ impl ICanvasLayer for LoadingScreenRust {
 		self.set_progress_value(self.displayed_progress);
 		let percent = (self.displayed_progress * 100.0).round() as i64;
 		if self.scene_loading_complete {
+			if self.complete_visible_since_ms == 0 {
+				self.complete_visible_since_ms = Time::singleton().get_ticks_msec() as i64;
+			}
 			self.set_progress_label(GString::from(format!("{} ({}%)", self.complete_text, percent)));
 		} else {
+			self.complete_visible_since_ms = 0;
 			self.set_progress_label(GString::from(format!("{} ({}%)", self.in_progress_text, percent)));
 		}
 	}
@@ -690,9 +699,26 @@ impl LoadingScreenRust {
 		self.scene_loading_progress = 0.0;
 		self.displayed_progress = 0.0;
 		self.loading_start_time_ms = Time::singleton().get_ticks_msec() as i64;
+		self.complete_visible_since_ms = 0;
 		self.set_progress_value(0.0);
 		self.base_mut().show();
 		self.base_mut().set_process(true);
+	}
+
+	#[func]
+	fn can_close_loading_screen(&self) -> bool {
+		if !self.scene_loading_complete {
+			return false;
+		}
+		if self.displayed_progress < 0.999 {
+			return false;
+		}
+		if self.complete_visible_since_ms <= 0 {
+			return false;
+		}
+		let now = Time::singleton().get_ticks_msec() as i64;
+		let elapsed_ms = now - self.complete_visible_since_ms;
+		elapsed_ms >= (self.hold_after_complete_sec * 1000.0) as i64
 	}
 
 	#[func]
@@ -719,11 +745,14 @@ struct LoadingScreenWithShaderCachingRust {
 	shader_delay_timer: f64,
 	#[export]
 	progress_lerp_speed: f64,
+	#[export]
+	hold_after_complete_sec: f64,
 	scene_loading_complete: bool,
 	scene_loading_progress: f64,
 	caching_progress: f64,
 	displayed_progress: f64,
 	loading_shader_cache: bool,
+	complete_visible_since_ms: i64,
 	base: Base<CanvasLayer>,
 }
 
@@ -1145,11 +1174,13 @@ impl ICanvasLayer for LoadingScreenWithShaderCachingRust {
 			]),
 			shader_delay_timer: 0.1,
 			progress_lerp_speed: 5.5,
+			hold_after_complete_sec: 0.25,
 			scene_loading_complete: false,
 			scene_loading_progress: 0.0,
 			caching_progress: 0.0,
 			displayed_progress: 0.0,
 			loading_shader_cache: false,
+			complete_visible_since_ms: 0,
 			base,
 		}
 	}
@@ -1159,6 +1190,7 @@ impl ICanvasLayer for LoadingScreenWithShaderCachingRust {
 			sl.set("_background_loading", &true.to_variant());
 		}
 		self.displayed_progress = 0.0;
+		self.complete_visible_since_ms = 0;
 		self.set_progress_value(0.0);
 		self.base_mut().set_process(true);
 	}
@@ -1235,10 +1267,30 @@ impl LoadingScreenWithShaderCachingRust {
 		self.set_progress_value(self.displayed_progress);
 		let percent = (self.displayed_progress * 100.0).round() as i64;
 		if self.scene_loading_complete {
+			if self.complete_visible_since_ms == 0 {
+				self.complete_visible_since_ms = Time::singleton().get_ticks_msec() as i64;
+			}
 			self.set_progress_label(GString::from(format!("Loading Complete! ({}%)", percent)));
 		} else {
+			self.complete_visible_since_ms = 0;
 			self.set_progress_label(GString::from(format!("Loading... ({}%)", percent)));
 		}
+	}
+
+	#[func]
+	fn can_close_loading_screen(&self) -> bool {
+		if !self.scene_loading_complete {
+			return false;
+		}
+		if self.displayed_progress < 0.999 {
+			return false;
+		}
+		if self.complete_visible_since_ms <= 0 {
+			return false;
+		}
+		let now = Time::singleton().get_ticks_msec() as i64;
+		let elapsed_ms = now - self.complete_visible_since_ms;
+		elapsed_ms >= (self.hold_after_complete_sec * 1000.0) as i64
 	}
 
 	fn set_progress_value(&mut self, value: f64) {

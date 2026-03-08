@@ -1,3 +1,4 @@
 res://addons/removed_template/base/translations/menus_translations.en.translation
 res://addons/removed_template/base/translations/menus_translations.fr.translation
 res://scenes/menus/main_menu/main_menu_with_animations.gd
+res://addons/removed_template/base/nodes/autoloads/scene_loader/scene_loader.gd
