@@ -1,0 +1,262 @@
+[gd_scene format=3 uid="uid://b63kto0j88rwk"]
+
+[ext_resource type="Texture2D" uid="uid://b5gdnd7tamqfv" path="res://scenes/account/pirata_01.png" id="2_jigcp"]
+[ext_resource type="FontFile" uid="uid://cbvk8gbmixmbq" path="res://fonts/Retro Gaming.ttf" id="2_retro_font"]
+
+[sub_resource type="GDScript" id="GDScript_jigcp"]
+script/source = "extends Control
+
+@export var character_texture: Texture2D
+@export_file(\"*.png\", \"*.jpg\", \"*.jpeg\", \"*.webp\") var character_texture_path: String = \"res://assets/menu_custom/personagem.png\"
+
+@onready var _username: LineEdit = get_node_or_null(\"MainPanel/Margin/LayoutRow/LeftCard/LeftMargin/FormVBox/UsernameInput\")
+@onready var _password: LineEdit = get_node_or_null(\"MainPanel/Margin/LayoutRow/LeftCard/LeftMargin/FormVBox/PasswordInput\")
+@onready var _confirm_password: LineEdit = get_node_or_null(\"MainPanel/Margin/LayoutRow/LeftCard/LeftMargin/FormVBox/ConfirmPasswordInput\")
+@onready var _feedback: Label = get_node_or_null(\"MainPanel/Margin/LayoutRow/LeftCard/LeftMargin/FormVBox/FeedbackLabel\")
+@onready var _character_sprite: Sprite2D = get_node_or_null(\"MainPanel/Margin/LayoutRow/Pirate\")
+
+func _has_required_nodes() -> bool:
+	return _username != null and _password != null and _confirm_password != null and _feedback != null
+
+func _ready() -> void:
+	if not _has_required_nodes():
+		push_warning(\"CreateAccountForm: required nodes not found.\")
+		return
+	if _character_sprite != null:
+		if character_texture != null:
+			_character_sprite.texture = character_texture
+		elif not character_texture_path.is_empty() and ResourceLoader.exists(character_texture_path):
+			var loaded := load(character_texture_path)
+			if loaded is Texture2D:
+				_character_sprite.texture = loaded
+	_feedback.text = \"\"
+
+func _on_create_account_button_pressed() -> void:
+	if not _has_required_nodes():
+		return
+
+	var username := _username.text.strip_edges()
+	var password := _password.text
+	var confirm_password := _confirm_password.text
+
+	if username.is_empty():
+		_feedback.text = \"Informe um nome de usuario.\"
+		return
+	if password.length() < 6:
+		_feedback.text = \"A senha precisa ter pelo menos 6 caracteres.\"
+		return
+	if password != confirm_password:
+		_feedback.text = \"As senhas nao coincidem.\"
+		return
+
+	_feedback.text = \"Conta criada com sucesso (simulada)!\"
+	_username.clear()
+	_password.clear()
+	_confirm_password.clear()
+
+func _on_clear_button_pressed() -> void:
+	if not _has_required_nodes():
+		return
+
+	_username.clear()
+	_password.clear()
+	_confirm_password.clear()
+	_feedback.text = \"\"
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.133333, 0.0823529, 0.0431373, 0.76)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.682353, 0.509804, 0.243137, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_input"]
+bg_color = Color(0.180392, 0.105882, 0.054902, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.380392, 0.239216, 0.12549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_primary"]
+bg_color = Color(0.92549, 0.541176, 0.0784314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.733333, 0.360784, 0.0470588, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_secondary"]
+bg_color = Color(0.223529, 0.141176, 0.0784314, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.380392, 0.239216, 0.12549, 1)
+
+[node name="CreateAccountForm" type="Control" unique_id=46549880]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_jigcp")
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="." unique_id=1910031142]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MainPanel" type="Control" parent="." unique_id=1082957518]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="MainPanel" unique_id=1126609339]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="LayoutRow" type="HBoxContainer" parent="MainPanel/Margin" unique_id=1472111278]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="LeftCard" type="PanelContainer" parent="MainPanel/Margin/LayoutRow" unique_id=1032804929]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="LeftMargin" type="MarginContainer" parent="MainPanel/Margin/LayoutRow/LeftCard" unique_id=168095533]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="FormVBox" type="VBoxContainer" parent="MainPanel/Margin/LayoutRow/LeftCard/LeftMargin" unique_id=1795391344]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TitleLabel" type="Label" parent="MainPanel/Margin/LayoutRow/LeftCard/LeftMargin/FormVBox" unique_id=1362189007]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.58, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.08, 0.14, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_retro_font")
+text = "Cadastro"
+horizontal_alignment = 1
+
+[node name="UsernameLabel" type="Label" parent="MainPanel/Margin/LayoutRow/LeftCard/LeftMargin/FormVBox" unique_id=1510226871]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.98, 1, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.08, 0.14, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_retro_font")
+text = "Nome de usuario"
+
+[node name="UsernameInput" type="LineEdit" parent="MainPanel/Margin/LayoutRow/LeftCard/LeftMargin/FormVBox" unique_id=1327147141]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.93, 0.98, 1, 1)
+theme_override_colors/caret_color = Color(1, 0.74, 0.32, 1)
+theme_override_fonts/font = ExtResource("2_retro_font")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_input")
+
+[node name="PasswordLabel" type="Label" parent="MainPanel/Margin/LayoutRow/LeftCard/LeftMargin/FormVBox" unique_id=1463248111]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.98, 1, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.08, 0.14, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_retro_font")
+text = "Senha"
+
+[node name="PasswordInput" type="LineEdit" parent="MainPanel/Margin/LayoutRow/LeftCard/LeftMargin/FormVBox" unique_id=1827799755]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.93, 0.98, 1, 1)
+theme_override_colors/caret_color = Color(1, 0.74, 0.32, 1)
+theme_override_fonts/font = ExtResource("2_retro_font")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_input")
+secret = true
+
+[node name="ConfirmPasswordLabel" type="Label" parent="MainPanel/Margin/LayoutRow/LeftCard/LeftMargin/FormVBox" unique_id=243761223]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.98, 1, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.08, 0.14, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_retro_font")
+text = "Confirmar senha"
+
+[node name="ConfirmPasswordInput" type="LineEdit" parent="MainPanel/Margin/LayoutRow/LeftCard/LeftMargin/FormVBox" unique_id=1133759635]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.93, 0.98, 1, 1)
+theme_override_colors/caret_color = Color(1, 0.74, 0.32, 1)
+theme_override_fonts/font = ExtResource("2_retro_font")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_input")
+secret = true
+
+[node name="ButtonsRow" type="HBoxContainer" parent="MainPanel/Margin/LayoutRow/LeftCard/LeftMargin/FormVBox" unique_id=338804292]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CreateAccountButton" type="Button" parent="MainPanel/Margin/LayoutRow/LeftCard/LeftMargin/FormVBox/ButtonsRow" unique_id=1442776243]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.18, 0.1, 0.04, 1)
+theme_override_colors/font_focus_color = Color(0.18, 0.1, 0.04, 1)
+theme_override_colors/font_pressed_color = Color(0.18, 0.1, 0.04, 1)
+theme_override_colors/font_hover_color = Color(0.18, 0.1, 0.04, 1)
+theme_override_fonts/font = ExtResource("2_retro_font")
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_primary")
+text = "Criar Conta"
+
+[node name="ClearButton" type="Button" parent="MainPanel/Margin/LayoutRow/LeftCard/LeftMargin/FormVBox/ButtonsRow" unique_id=2125896788]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95, 0.98, 1, 1)
+theme_override_colors/font_focus_color = Color(0.95, 0.98, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.95, 0.98, 1, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.98, 1, 1)
+theme_override_fonts/font = ExtResource("2_retro_font")
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_secondary")
+text = "Limpar"
+
+[node name="FeedbackLabel" type="Label" parent="MainPanel/Margin/LayoutRow/LeftCard/LeftMargin/FormVBox" unique_id=1405139954]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.08, 0.14, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_retro_font")
+autowrap_mode = 2
+
+[node name="Pirata01" type="Sprite2D" parent="MainPanel/Margin" unique_id=1850867053]
+position = Vector2(454, 214)
+scale = Vector2(0.30922693, 0.2625)
+texture = ExtResource("2_jigcp")
+
+[connection signal="pressed" from="MainPanel/Margin/LayoutRow/LeftCard/LeftMargin/FormVBox/ButtonsRow/CreateAccountButton" to="." method="_on_create_account_button_pressed"]
+[connection signal="pressed" from="MainPanel/Margin/LayoutRow/LeftCard/LeftMargin/FormVBox/ButtonsRow/ClearButton" to="." method="_on_clear_button_pressed"]

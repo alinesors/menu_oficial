@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://25usaddw46v0"]
+
+[ext_resource type="PackedScene" uid="uid://b63kto0j88rwk" path="res://scenes/account/create_account_form.tscn" id="1_r5ajq"]
+
+[node name="Cadastro" type="Control" unique_id=341542850]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreateAccountForm" parent="." unique_id=46549880 instance=ExtResource("1_r5ajq")]
+layout_mode = 1

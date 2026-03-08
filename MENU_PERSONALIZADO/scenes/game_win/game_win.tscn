@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://b0nb46nu680g7"]
+
+[ext_resource type="Script" uid="uid://7mpees1opgr3" path="res://scenes/game_win/game_win.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://cbvk8gbmixmbq" path="res://fonts/Retro Gaming.ttf" id="2_retro_font"]
+[ext_resource type="Texture2D" uid="uid://bufwslgo15fs7" path="res://scenes/game_win/6.png" id="3_bg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.05, 0.07, 0.06, 0.68)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.73, 0.48, 0.9)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_primary"]
+bg_color = Color(0.9, 0.5, 0.07, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.68, 0.31, 0.04, 1)
+
+[node name="GameWinScreen" type="Control" unique_id=1510655135]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1361097461]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_bg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CenterBackdrop" type="Panel" parent="." unique_id=1876612504]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -92.0
+offset_right = -24.0
+offset_bottom = 92.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="CenterVBox" type="VBoxContainer" parent="." unique_id=781806973]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -76.0
+offset_right = -40.0
+offset_bottom = 76.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="CenterVBox" unique_id=266599250]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.95, 0.98, 1, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.07, 0.12, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_retro_font")
+text = "VOCE VENCEU!"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="CenterVBox" unique_id=1086682521]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.95, 0.98, 1, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.07, 0.12, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_retro_font")
+text = "Parabens por concluir 
+a partida."
+horizontal_alignment = 1
+
+[node name="MenuButton" type="Button" parent="CenterVBox" unique_id=834358591]
+custom_minimum_size = Vector2(260, 38)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.16, 0.08, 0.04, 1)
+theme_override_colors/font_focus_color = Color(0.16, 0.08, 0.04, 1)
+theme_override_colors/font_pressed_color = Color(0.16, 0.08, 0.04, 1)
+theme_override_colors/font_hover_color = Color(0.16, 0.08, 0.04, 1)
+theme_override_fonts/font = ExtResource("2_retro_font")
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_primary")
+text = "Menu Principal"
+
+[connection signal="pressed" from="CenterVBox/MenuButton" to="." method="_on_menu_button_pressed"]

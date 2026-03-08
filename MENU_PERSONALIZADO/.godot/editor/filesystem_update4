@@ -2,3 +2,11 @@ res://addons/removed_template/base/translations/menus_translations.en.translatio
 res://addons/removed_template/base/translations/menus_translations.fr.translation
 res://scenes/menus/main_menu/main_menu_with_animations.gd
 res://addons/removed_template/base/nodes/autoloads/scene_loader/scene_loader.gd
+res://scenes/account/create_account_form.gd
+res://scenes/account/create_account_form.tscn
+res://scenes/windows/main_menu_create_account_window.tscn
+res://scenes/game_over/game_over.gd
+res://scenes/game_win/game_win.gd
+res://resources/themes/lore.tres
+res://scenes/game_win/game_win.tscn
+res://scenes/account/simple_profile_form.gd

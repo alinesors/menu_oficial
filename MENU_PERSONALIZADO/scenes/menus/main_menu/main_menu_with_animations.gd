@@ -13,9 +13,10 @@ func _ready() -> void:
 		_rust.call("on_ready", self)
 		return
 
-	var new_game_button := $MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/NewGameButton
-	new_game_button.visible = true
-	new_game_button.text = "Jogar"
+	var new_game_button := get_node_or_null("MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/NewGameButton")
+	if new_game_button != null:
+		new_game_button.visible = true
+		new_game_button.text = "Jogar"
 
 	if ResourceLoader.exists(background_image_path):
 		var tex := load(background_image_path)

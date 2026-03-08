@@ -4,10 +4,12 @@
 [ext_resource type="Script" uid="uid://bp83jdigiwojw" path="res://scenes/menus/main_menu/main_menu.gd" id="2_peecx"]
 [ext_resource type="PackedScene" uid="uid://bl78i66px14kc" path="res://scenes/windows/main_menu_credits_window.tscn" id="4_0jpat"]
 [ext_resource type="FontFile" uid="uid://cbvk8gbmixmbq" path="res://fonts/Retro Gaming.ttf" id="5_ub2bi"]
+[ext_resource type="PackedScene" path="res://scenes/windows/main_menu_create_account_window.tscn" id="6_account"]
 
 [node name="MainMenu" unique_id=978546404 instance=ExtResource("1_peecx")]
 script = ExtResource("2_peecx")
 
+options_packed_scene = ExtResource("6_account")
 credits_packed_scene = ExtResource("4_0jpat")
 
 [node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" parent_id_path=PackedInt32Array(556427956) index="0" unique_id=359406872]
@@ -22,8 +24,8 @@ text = "Ecos no Nevoeiro"
 theme_override_fonts/font = ExtResource("5_ub2bi")
 
 [node name="OptionsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" parent_id_path=PackedInt32Array(2017477786) index="1" unique_id=1486236076]
-visible = false
 theme_override_fonts/font = ExtResource("5_ub2bi")
+text = "Criar Conta"
 
 [node name="CreditsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" parent_id_path=PackedInt32Array(2017477786) index="2" unique_id=301223169]
 theme_override_fonts/font = ExtResource("5_ub2bi")

@@ -33,10 +33,10 @@ subtraction_symbol.png::CompressedTexture2D::3729288121265877589::1772979667::17
 ::res://addons/removed_template/base/nodes/autoloads/::1772987503
 ::res://addons/removed_template/base/nodes/autoloads/app_config/::1772987503
 app_config.gd::GDScript::5716055322149362337::1772979667::0::1::::<>Node<><>0<>0<><>::
-app_config.tscn::PackedScene::5425483096977576605::1772979688::0::1::::<><><>0<>0<><>::uid://cno5ujal5t3kf::::res://addons/removed_template/base/nodes/autoloads/app_config/app_config.gd
+app_config.tscn::PackedScene::5425483096977576605::1772989716::0::1::::<><><>0<>0<><>::uid://cno5ujal5t3kf::::res://addons/removed_template/base/nodes/autoloads/app_config/app_config.gd
 ::res://addons/removed_template/base/nodes/autoloads/music_controller/::1772987503
 ::res://addons/removed_template/base/nodes/autoloads/scene_loader/::1772987503
-scene_loader.gd::GDScript::6422444806138659039::1772979667::0::1::::SceneLoaderClass<>Node<><>0<>0<><>::
+scene_loader.gd::GDScript::6422444806138659039::1772990325::0::1::::SceneLoaderClass<>Node<><>0<>0<><>::
 scene_loader.tscn::PackedScene::4889206191134864012::1772979688::0::1::::<><><>0<>0<><>::uid://cxrcy0evb0j3l::::res://addons/removed_template/base/nodes/autoloads/scene_loader/scene_loader.gd
 ::res://addons/removed_template/base/nodes/autoloads/ui_sound_controller/::1772987503
 ::res://addons/removed_template/base/nodes/config/::1772987503
@@ -103,41 +103,50 @@ api_client.tscn::PackedScene::8367348601370207448::1772979688::0::1::::<><><>0<>
 download_and_extract.gd::GDScript::3552431743130421344::1772979668::0::1::::<>Node<><>0<>1<><>::
 download_and_extract.tscn::PackedScene::7952737012132257905::1772979688::0::1::::<><><>0<>0<><>::uid://bqu3bc0tttrfk::::res://addons/removed_template/utilities/download_and_extract.gd
 ::res://assets/::1772988398
-::res://assets/menu_custom/::1772988410
+::res://assets/menu_custom/::1772988442
 main_menu_bg_rustland_01.png::CompressedTexture2D::6599974290923797005::1772988231::1772988442::1::::<><><>0<>0<>3a70bb66ba6fcca53e153257b2f96a19<>res://.godot/imported/main_menu_bg_rustland_01.png-6171f02e67336cc74c3b83d8c1233378.ctex::
 opening_bg_01.png::CompressedTexture2D::9039661013690013702::1772976347::1772987985::1::::<><><>0<>0<>00c6f84c85fd72ab1bce9a882fa5d370<>res://.godot/imported/opening_bg_01.png-65f9241750db36103a670ae35c0ec1d4.ctex::
 ::res://fonts/::1772987985
 Retro Gaming.ttf::FontFile::4887048562227754970::1772840473::1772987985::1::::<><><>0<>0<>8951fdb6bc38828c49337f486b0f9dac<>res://.godot/imported/Retro Gaming.ttf-dad03884b8f0a8a950353fb9a5b356c4.fontdata::
 ::res://resources/::1772987504
-::res://resources/themes/::1772987504
-expedition.tres::Theme::9179853846432166952::1772920626::0::1::::<><><>0<>0<><>::res://fonts/Retro Gaming.ttf
-gravity.tres::Theme::9160123276376252862::1772920626::0::1::::<><><>0<>0<><>::res://fonts/Retro Gaming.ttf
-grow.tres::Theme::6400808291457558108::1772920626::0::1::::<><><>0<>0<><>::res://fonts/Retro Gaming.ttf
-lab.tres::Theme::5822240401794949401::1772920626::0::1::::<><><>0<>0<><>::res://fonts/Retro Gaming.ttf
-lore.tres::Theme::182372799154857095::1772987221::0::1::::<><><>0<>0<><>::uid://cbvk8gbmixmbq::::res://fonts/Retro Gaming.ttf
-steal_this_theme.tres::Theme::6056453581474368115::1772920626::0::1::::<><><>0<>0<><>::res://fonts/Retro Gaming.ttf
+::res://resources/themes/::1772994011
+lore.tres::Theme::182372799154857095::1772994011::0::1::::<><><>0<>0<><>::uid://cbvk8gbmixmbq::::res://fonts/Retro Gaming.ttf
 ::res://rust_extension/::1772987504
 Cargo.toml::TextFile::-1::1772937440::0::1::::<><><>0<>0<><>::
 menu_ui_rust.gdextension::GDExtension::3607381601158756450::1772942230::0::1::::<><><>0<>0<><>::
 ::res://rust_extension/bin/::1772987984
 ::res://rust_extension/src/::1772987504
-::res://scenes/::1772987504
+::res://scenes/::1772996844
+::res://scenes/account/::1772997665
+cadastro.tscn::PackedScene::1958276599795580359::1772996853::0::1::::<><><>0<>0<><>::uid://b63kto0j88rwk::::res://scenes/account/create_account_form.tscn
+create_account_form.tscn::PackedScene::4620719287998984114::1772997532::0::1::::<><><>0<>0<><>::uid://c6twqa7x6ggt7::::res://scenes/account/pirata2.png<>uid://cbvk8gbmixmbq::::res://fonts/Retro Gaming.ttf
+pirata_01.png::CompressedTexture2D::4504677833525049407::1772997634::1772997675::1::::<><><>0<>0<>b53673282dec12adcf5c6fce67ca3351<>res://.godot/imported/pirata_01.png-ce0f8fe38ad6a89709c775431c462d70.ctex::
+simple_profile_form.gd::GDScript::1751235606464743044::1772997432::0::1::::<>Control<><>0<>0<><>::
+simple_profile_form.tscn::PackedScene::-1::1772997432::0::1::::<><><>0<>0<><>::res://scenes/account/simple_profile_form.gd<>res://fonts/Retro Gaming.ttf
 ::res://scenes/credits/::1772987504
 credits_label.tscn::PackedScene::621236750232397738::1772988068::0::1::::<><><>0<>0<><>::uid://cc2wtqasev7le::::res://addons/removed_template/base/nodes/labels/credits_label.gd
 scrollable_credits.tscn::PackedScene::7074889928112388041::1772980960::0::1::::<><><>0<>0<><>::uid://i36xcmixieoo::::res://scenes/credits/credits_label.tscn
 scrolling_credits.tscn::PackedScene::8855668586540960422::1772980960::0::1::::<><><>0<>0<><>::uid://i36xcmixieoo::::res://scenes/credits/credits_label.tscn
-::res://scenes/end_credits/::1772987504
-end_credits.tscn::PackedScene::2679895341643476877::1772983356::0::1::::<><><>0<>0<><>::uid://1nf36h0gms3q::::res://addons/removed_template/base/nodes/utilities/capture_focus.gd<>uid://i36xcmixieoo::::res://scenes/credits/credits_label.tscn
-::res://scenes/loading_screen/::1772988073
-loading_screen.gd::GDScript::5454730882351306890::1772982366::0::1::::<>LoadingScreenRust<><>0<>0<><>::
-loading_screen.tscn::PackedScene::1316925330589345032::1772984448::0::1::::<><><>0<>0<><>::
-loading_screen_with_shader_caching.tscn::PackedScene::1316767516764663009::1772982262::0::1::::<><><>0<>0<><>::res://scenes/loading_screen/loading_screen_with_shader_caching.gd
+::res://scenes/end_credits/::1772989738
+end_credits.tscn::PackedScene::1512103802544110329::1772989738::0::1::::<><><>0<>0<><>::uid://1nf36h0gms3q::::res://addons/removed_template/base/nodes/utilities/capture_focus.gd<>uid://i36xcmixieoo::::res://scenes/credits/credits_label.tscn
+::res://scenes/game_over/::1772995305
+7.png::CompressedTexture2D::2428418987527857085::1772995230::1772995305::1::::<><><>0<>0<>ad84571495e507bc0a35d20a347ab548<>res://.godot/imported/7.png-a5de07882579b266673b32fab914d04b.ctex::
+game_over.gd::GDScript::6496511184571485487::1772991708::0::1::::<>Control<><>0<>0<><>::
+game_over.tscn::PackedScene::-1::1772995795::0::1::::<><><>0<>0<><>::res://scenes/game_over/game_over.gd
+::res://scenes/game_win/::1772995560
+6.png::CompressedTexture2D::3801887951052902248::1772995230::1772995305::1::::<><><>0<>0<>a019be564c7bce8b3d55e13b48045904<>res://.godot/imported/6.png-996e94211c9f8d6ffe44430cf248f63f.ctex::
+game_win.gd::GDScript::2271733666633377038::1772991708::0::1::::<>Control<><>0<>0<><>::
+game_win.tscn::PackedScene::4168092839720469128::1772995711::0::1::::<><><>0<>0<><>::uid://7mpees1opgr3::::res://scenes/game_win/game_win.gd<>uid://cbvk8gbmixmbq::::res://fonts/Retro Gaming.ttf<>uid://bufwslgo15fs7::::res://scenes/game_win/6.png
+::res://scenes/loading_screen/::1772990325
+loading_screen.gd::GDScript::-1::1772990325::0::1::::<>LoadingScreenRust<><>0<>0<><>::
+loading_screen.tscn::PackedScene::1316925330589345032::1772989213::0::1::::<><><>0<>0<><>::
+loading_screen_with_shader_caching.tscn::PackedScene::1316767516764663009::1772989213::0::1::::<><><>0<>0<><>::res://scenes/loading_screen/loading_screen_with_shader_caching.gd
 ::res://scenes/menus/::1772987504
 ::res://scenes/menus/main_menu/::1772987504
 main_menu.gd::GDScript::3509094122302834672::1772904591::0::1::::<>MainMenu<><>0<>0<><>::
-main_menu.tscn::PackedScene::7355844132733426654::1772987007::0::1::::<><><>0<>0<><>::uid://c6k5nnpbypshi::::res://addons/removed_template/base/nodes/menus/main_menu/main_menu.tscn<>uid://bp83jdigiwojw::::res://scenes/menus/main_menu/main_menu.gd<>uid://bl78i66px14kc::::res://scenes/windows/main_menu_credits_window.tscn<>uid://cbvk8gbmixmbq::::res://fonts/Retro Gaming.ttf
-main_menu_with_animations.gd::GDScript::7547782008482336053::1772988438::0::1::::<>MainMenu<><>0<>0<><>::
-main_menu_with_animations.tscn::PackedScene::5721635838641705256::1772988438::0::1::::<><><>0<>0<><>::uid://c6k5nnpbypshi::::res://addons/removed_template/base/nodes/menus/main_menu/main_menu.tscn<>uid://dfsg4qgand5n2::::res://scenes/menus/main_menu/main_menu_with_animations.gd<>uid://bl78i66px14kc::::res://scenes/windows/main_menu_credits_window.tscn
+main_menu.tscn::PackedScene::7355844132733426654::1772991047::0::1::::<><><>0<>0<><>::uid://c6k5nnpbypshi::::res://addons/removed_template/base/nodes/menus/main_menu/main_menu.tscn<>uid://bp83jdigiwojw::::res://scenes/menus/main_menu/main_menu.gd<>uid://bl78i66px14kc::::res://scenes/windows/main_menu_credits_window.tscn<>uid://cbvk8gbmixmbq::::res://fonts/Retro Gaming.ttf
+main_menu_with_animations.gd::GDScript::7547782008482336053::1772991130::0::1::::<>MainMenu<><>0<>0<><>::
+main_menu_with_animations.tscn::PackedScene::5721635838641705256::1772991047::0::1::::<><><>0<>0<><>::uid://c6k5nnpbypshi::::res://addons/removed_template/base/nodes/menus/main_menu/main_menu.tscn<>uid://dfsg4qgand5n2::::res://scenes/menus/main_menu/main_menu_with_animations.gd<>uid://bl78i66px14kc::::res://scenes/windows/main_menu_credits_window.tscn
 ::res://scenes/menus/options_menu/::1772987504
 master_options_menu_with_tabs.tscn::PackedScene::3272523114838421629::1772983362::0::1::::<><><>0<>0<><>::uid://c3mignmhuvvq4::::res://addons/removed_template/base/nodes/menus/options_menu/paginated_tab_container.gd<>uid://c2j3k2fbtuxuo::::res://scenes/menus/options_menu/input/input_extras_menu.tscn
 ::res://scenes/menus/options_menu/audio/::1772987504
@@ -151,7 +160,8 @@ opening.tscn::PackedScene::2366703745577546539::1772979508::0::1::::<><><>0<>0<>
 tela_inicial.gd::GDScript::1798850550952222125::1772986868::0::1::::<>Control<><>0<>0<><>::
 tela_inicial.tscn::PackedScene::1689274674681872319::1772987656::0::1::::<><><>0<>0<><>::res://assets/menu_custom/opening_bg_01.png
 tela_inicial_zelda.tscn::PackedScene::5714695731113355559::1772987150::0::1::::<><><>0<>0<><>::
-::res://scenes/windows/::1772987504
+::res://scenes/windows/::1772990955
+main_menu_create_account_window.tscn::PackedScene::-1::1772991047::0::1::::<><><>0<>0<><>::res://addons/removed_template/base/nodes/windows/overlaid_window_scene_container.tscn<>res://scenes/account/create_account_form.tscn
 main_menu_credits_window.gd::GDScript::4409826816647822511::1772979508::0::1::::<>OverlaidWindow<><>0<>1<><>::
 main_menu_credits_window.tscn::PackedScene::3226577675780016810::1772979508::0::1::::<><><>0<>0<><>::uid://crndfbb22ri4s::::res://addons/removed_template/base/nodes/windows/overlaid_window_scene_container.tscn<>uid://b33fg6d5uu6gh::::res://scenes/windows/main_menu_credits_window.gd<>uid://c72enynwlon42::::res://scenes/credits/scrollable_credits.tscn
 main_menu_options_window.tscn::PackedScene::599525249428748097::1772979508::0::1::::<><><>0<>0<><>::uid://crndfbb22ri4s::::res://addons/removed_template/base/nodes/windows/overlaid_window_scene_container.tscn<>uid://bmvh8ic2bydjp::::res://scenes/menus/options_menu/master_options_menu_with_tabs.tscn

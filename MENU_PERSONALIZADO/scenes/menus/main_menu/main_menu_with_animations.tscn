@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/removed_template/base/nodes/menus/main_menu/main_menu.tscn" id="1_rr1rn"]
 [ext_resource type="Script" uid="uid://dfsg4qgand5n2" path="res://scenes/menus/main_menu/main_menu_with_animations.gd" id="2_rr1rn"]
 [ext_resource type="PackedScene" uid="uid://bl78i66px14kc" path="res://scenes/windows/main_menu_credits_window.tscn" id="4_2k5l7"]
+[ext_resource type="PackedScene" path="res://scenes/windows/main_menu_create_account_window.tscn" id="5_account"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -315,6 +316,7 @@ graph_offset = Vector2(-180.277, 49)
 [node name="MainMenu" unique_id=534393544 instance=ExtResource("1_rr1rn")]
 script = ExtResource("2_rr1rn")
 background_image_path = "res://assets/menu_custom/main_menu_bg_rustland_01.png"
+options_packed_scene = ExtResource("5_account")
 credits_packed_scene = ExtResource("4_2k5l7")
 
 [node name="MenuAnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=269645399]
@@ -339,6 +341,10 @@ modulate = Color(1, 1, 1, 0)
 
 [node name="MenuButtonsBoxContainer" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer" index="0" unique_id=2017477786]
 lock = true
+
+[node name="OptionsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="1" unique_id=1486236076]
+visible = true
+text = "Criar Conta"
 
 [node name="VersionContainer" parent="VersionMargin" parent_id_path=PackedInt32Array(1732528471) index="0" unique_id=1603969262]
 modulate = Color(1, 1, 1, 0)

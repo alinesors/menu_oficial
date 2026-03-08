@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://addons/removed_template/base/nodes/windows/overlaid_window_scene_container.tscn" id="1_window_base"]
+[ext_resource type="PackedScene" path="res://scenes/account/create_account_form.tscn" id="2_account_form"]
+
+[node name="MainMenuCreateAccountWindow" instance=ExtResource("1_window_base")]
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+packed_scene = ExtResource("2_account_form")
+
+[node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" index="0"]
+text = "Criar Conta"
+
+[node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="0"]
+text = "Voltar"
