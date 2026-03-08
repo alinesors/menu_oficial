@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://dgj0h4qi7rf04"]
+
+[ext_resource type="PackedScene" uid="uid://6gdbfi0172ji" path="res://addons/removed_template/base/nodes/windows/overlaid_window.tscn" id="2_1r40g"]
+[ext_resource type="Script" uid="uid://4a6rwoc11dsu" path="res://scenes/windows/pause_menu.gd" id="3_okuwl"]
+[ext_resource type="PackedScene" uid="uid://dqsvgldhj81i" path="res://scenes/windows/pause_menu_options_window.tscn" id="4_mh1be"]
+[ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/removed_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="5_bgbk1"]
+
+[node name="PauseMenuLayer" type="PauseMenuLayerRust" unique_id=582024036]
+process_mode = 3
+
+[node name="PauseMenu" parent="." unique_id=578672004 instance=ExtResource("2_1r40g")]
+unique_name_in_owner = true
+process_mode = 3
+custom_minimum_size = Vector2(256, 312)
+script = ExtResource("3_okuwl")
+options_menu_scene = ExtResource("4_mh1be")
+main_menu_scene_path = ""
+restart_confirmation_node_path = NodePath("../RestartConfirmation")
+main_menu_confirmation_node_path = NodePath("../MainMenuConfirmation")
+exit_confirmation_node_path = NodePath("../ExitConfirmation")
+menu_container_node_path = NodePath("..")
+pauses_game = true
+update_content = true
+title = "Pausado"
+
+[node name="TitleLabel" parent="PauseMenu/ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(578672004, 1788474031) index="0" unique_id=1049966061]
+text = "Pausado"
+
+[node name="BodyMargin" parent="PauseMenu/ContentContainer/BoxContainer" parent_id_path=PackedInt32Array(578672004, 394030069) index="1" unique_id=590613964]
+visible = false
+
+[node name="MenuButtonsMargin" parent="PauseMenu/ContentContainer/BoxContainer" parent_id_path=PackedInt32Array(578672004, 394030069) index="2" unique_id=1413292752]
+size_flags_vertical = 3
+
+[node name="CloseButton" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(578672004, 1371114575) index="0" unique_id=314526102]
+text = "Continuar"
+
+[node name="RestartButton" type="Button" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(578672004, 1371114575) index="1" unique_id=1972406272]
+layout_mode = 2
+text = "Reiniciar"
+
+[node name="SaveGameButton" type="Button" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(578672004, 1371114575) index="2" unique_id=332420055]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Save Game"
+
+[node name="LoadGameButton" type="Button" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(578672004, 1371114575) index="3" unique_id=2059181378]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Load Game"
+
+[node name="OptionsButton" type="Button" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(578672004, 1371114575) index="4" unique_id=128294814]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Opcoes"
+
+[node name="MainMenuButton" type="Button" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(578672004, 1371114575) index="5" unique_id=689851907]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Menu Principal"
+
+[node name="ExitButton" type="Button" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(578672004, 1371114575) index="6" unique_id=1720763831]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Sair do Jogo"
+
+[node name="RestartConfirmation" parent="." unique_id=2035411393 instance=ExtResource("5_bgbk1")]
+unique_name_in_owner = true
+visible = false
+text = "Reiniciar o jogo?"
+title = "Confirmar Reinicio"
+
+[node name="MainMenuConfirmation" parent="." unique_id=1224882984 instance=ExtResource("5_bgbk1")]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(220, 0)
+text = "Sair para o menu principal?"
+title = "Confirmar Saida"
+
+[node name="ExitConfirmation" parent="." unique_id=169663192 instance=ExtResource("5_bgbk1")]
+unique_name_in_owner = true
+visible = false
+text = "Sair do jogo?"
+title = "Confirmar Saida"
+
+[connection signal="hidden" from="PauseMenu" to="." method="_on_pause_menu_hidden"]
+[connection signal="pressed" from="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/RestartButton" to="PauseMenu" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/SaveGameButton" to="PauseMenu" method="_on_save_game_button_pressed"]
+[connection signal="pressed" from="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/LoadGameButton" to="PauseMenu" method="_on_load_game_button_pressed"]
+[connection signal="pressed" from="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/OptionsButton" to="PauseMenu" method="_on_options_button_pressed"]
+[connection signal="pressed" from="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/MainMenuButton" to="PauseMenu" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/ExitButton" to="PauseMenu" method="_on_exit_button_pressed"]
+
+[editable path="PauseMenu"]
